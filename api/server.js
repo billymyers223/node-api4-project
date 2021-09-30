@@ -3,6 +3,13 @@ const server = express();
 server.use(express.json())
 const cors = require('cors')
 
+
+const data = [{
+    username: 'billymyers223',
+    password: 'pass',
+    id:1
+}]
+
 server.get('/',  (req,res) =>{
     res.json({message:'Web46 rocks!'})
 })
@@ -15,6 +22,10 @@ server.use((err,req,res,next) =>{
         message: err.message,
         stack: err.stack
     })
+})
+
+server.get('/api/users', (req,res) =>{
+    res.status(200).json(data);
 })
 
 module.exports = server;
